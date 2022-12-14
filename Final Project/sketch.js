@@ -16,39 +16,39 @@ let arcadeN =[];
 let bulb=[];
 let siren;
 // 0 background_music, 1 phone_call, 2 note_light, 3 bookTXT
-//4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted;
+//4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted; 9 pauses
 let narrative=[];
 
 function preload(){
     allSprites.collider = 'none';
   
-  fontBold = loadFont('data/font/pixelBold.ttf');
-  fontReg = loadFont('data/font/pixelReg.ttf');
+  fontBold = loadFont('pixelBold.ttf');
+  fontReg = loadFont('pixelReg.ttf');
   
-  stationary = loadAni('data/animation/stationary/jf_1.png', 6);
-  leftAni = loadAni('data/animation/left/left_1.png',2);
-  rightAni = loadAni('data/animation/right/right_1.png',2);
+  stationary = loadAni('jf_1.png', 6);
+  leftAni = loadAni('left_1.png',2);
+  rightAni = loadAni('right_1.png',2);
   //shake = loadAni('shake_1.png',2);
-  candle2 = loadImage('data/image/candle_1.png');
+  candle2 = loadImage('candle_1.png');
   
-  bgm = loadSound('data/audio/bgm.mp3'); //credit:Genshin Impact OST - Mondstadt
+  bgm = loadSound('bgm.mp3'); //credit:Genshin Impact OST - Mondstadt
   
   for(let i=0;i<7;i++){
-    arcadeF[i] = loadImage('data/image/arcadeF_'+i+'.png');
-    arcadeN[i] = loadImage('data/image/arcadeN_'+i+'.png');    
+    arcadeF[i] = loadImage('arcadeF_'+i+'.png');
+    arcadeN[i] = loadImage('arcadeN_'+i+'.png');    
   }
   
   for(let i=0;i<2;i++){
-    bulb[i] = loadImage('data/image/bulb'+i+'.png'); 
+    bulb[i] = loadImage('bulb'+i+'.png'); 
   }
   
   for(let i=0;i<15;i+=1){
-    images[i] = loadImage('data/image/'+i+1+'.png');  
+    images[i] = loadImage(i+1+'.png');  
   }
-  siren = loadImage('data/image/Devon.png');
+  siren = loadImage('Devon.png');
   
-  for(let i=0;i<9;i++){
-  narrative[i] = loadStrings('data/text/'+i+'.txt');
+  for(let i=0;i<10;i++){
+  narrative[i] = loadStrings(i+'.txt');
   }
 }
 
@@ -137,10 +137,10 @@ function draw(){
     fill(0);
     textFont(fontBold);
     textSize(50);
-    text('press m to restart your journey', width/2-400, height/2+200,400);
-    if(kb.presses('M')||kb.presses('m')){
-      scene = 'menu';
-    } 
+    text('THANK YOU!', width/2-400, height/2+200,400);
+    // if(kb.presses('M')||kb.presses('m')){
+    //  scene = 'menu';
+    // }  
     
   }
   
@@ -149,3 +149,6 @@ function draw(){
   //countdown();
   
 }
+
+
+
