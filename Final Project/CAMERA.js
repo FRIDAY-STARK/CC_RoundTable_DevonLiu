@@ -543,6 +543,8 @@ class CAMERA{
 		//print(tcI);
 		
 		if(this.scene == 1){
+
+			jellyfish.visible = true;
 			//set limit the view of camera
 			this.limit(3000,800);
 			//draw the background of scene1
