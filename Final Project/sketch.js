@@ -22,33 +22,34 @@ let narrative=[];
 function preload(){
     allSprites.collider = 'none';
   
-  fontBold = loadFont('pixelBold.ttf');
-  fontReg = loadFont('pixelReg.ttf');
+  fontBold = loadFont('data/font/pixelBold.ttf');
+  fontReg = loadFont('data/font/pixelReg.ttf');
   
-  stationary = loadAni('jf_1.png', 6);
-  leftAni = loadAni('left_1.png',2);
-  rightAni = loadAni('right_1.png',2);
+  stationary = loadAni('data/animation/stationary/jf_1.png', 6);
+  leftAni = loadAni('data/animation/left/left_1.png',2);
+  rightAni = loadAni('data/animation/right/right_1.png',2);
   //shake = loadAni('shake_1.png',2);
-  candle2 = loadImage('candle_1.png');
+  candle2 = loadImage('data/image/candle_1.png');
   
-  bgm = loadSound('bgm.mp3'); //credit:Genshin Impact OST - Mondstadt
+  bgm = loadSound('data/audio/bgm.mp3'); //credit:Genshin Impact OST - Mondstadt
   
   for(let i=0;i<7;i++){
-    arcadeF[i] = loadImage('arcadeF_'+i+'.png');
-    arcadeN[i] = loadImage('arcadeN_'+i+'.png');    
+    arcadeF[i] = loadImage('data/image/arcadeF_'+i+'.png');
+    arcadeN[i] = loadImage('data/image/arcadeN_'+i+'.png');    
   }
   
   for(let i=0;i<2;i++){
-    bulb[i] = loadImage('bulb'+i+'.png'); 
+    bulb[i] = loadImage('data/image/bulb'+i+'.png'); 
   }
   
   for(let i=0;i<15;i+=1){
-    images[i] = loadImage(i+1+'.png');  
+    let m = i+1;
+    images[i] = loadImage('data/image/'+m+'.png');  
   }
-  siren = loadImage('Devon.png');
+  siren = loadImage('data/image/Devon.png');
   
   for(let i=0;i<10;i++){
-  narrative[i] = loadStrings(i+'.txt');
+  narrative[i] = loadStrings('data/text/'+i+'.txt');
   }
 }
 
