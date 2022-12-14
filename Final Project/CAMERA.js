@@ -60,6 +60,7 @@ class CAMERA{
 		*/
 		this.arcadeI =[];
 		this.arcadeBoo =[];
+		this.whichLine = []
 		
 		for(let i=0;i<7;i++){
 			this.arcadeBoo[i] = false;
@@ -67,7 +68,9 @@ class CAMERA{
 		
 		this.access =false;
 		
-		this.whichLine = 0; 
+		for (let i=0;i<10;i++){
+		this.whichLine[i] = -1; 
+		}
 		// this.index=0;
 		//this.lineNum = 1;
 		this.part=' ';
@@ -156,11 +159,11 @@ class CAMERA{
 					bgm.loop();
 					this.part = 'background music';
 				}
-				// else{
-				// 	this.playing=false;
-				// 	bgm.pause();
-				// 	this.part = 'pauses';
-				// }
+				else{
+					this.playing=false;
+					bgm.pause();
+					this.part = 'pauses';
+				}
 			}
 			
 			if(tpI<200){
@@ -433,59 +436,60 @@ class CAMERA{
 		
 		/* index of the texts in the array of narrative
 		 0 background_music, 1 phone_call, 2 note_light, 3 bookTXT
-		4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted;
+		4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted;9 pauses
 		*/
-		//this.whichLine =0;
 		
 		if(this.part == 'background music'){
 			//this.whichLine = 0;
-			this.INdisplay(narrative[0]);
+			this.INdisplay(narrative[0],0);
 		}
 		// else if(this.part =='pauses'){
 		// 	this.whichLine = 1;
-		// 	this.INdisplay(narrative[0]);
+		// 	this.INdisplay(narrative[9],9);
 		// }
 		else if(this.part == 'phone call'){
 				//this.whichLine = 0;
-			this.INdisplay(narrative[1]);
+			this.INdisplay(narrative[1],1);
 		}
 		else if(this.part == 'note light'){
-			this.INdisplay(narrative[2]);
+			this.INdisplay(narrative[2],2);
 		}
 		else if (this.part == 'book'){
-			this.INdisplay(narrative[3]);
+			this.INdisplay(narrative[3],3);
 		}
 		else if(this.part == 'note'){
-			this.INdisplay(narrative[4]);
+			this.INdisplay(narrative[4],4);
 		}
 		else if(this.part == 'notebook'){
-			this.INdisplay(narrative[5]);
+			this.INdisplay(narrative[5],5);
 		}
 		else if(this.part == 'diary'){
-			this.INdisplay(narrative[6]);
+			this.INdisplay(narrative[6],6);
 		}
 		else if(this.part == 'access denied'){
-			this.INdisplay(narrative[7]);
+			this.INdisplay(narrative[7],7);
 		}
 		else if(this.part == 'access granted'){
-			this.INdisplay(narrative[8]);
+			this.INdisplay(narrative[8],8);
 		}
 
 	}
 		
-	INdisplay(chat){
-		let currentLine= chat[this.whichLine]; // a string
+	INdisplay(chat,index){
+		let currentLine= chat[this.whichLine[index]]; // a string
+		if(this.whichLine[index]>=0 && this.whichLine[index]<chat.length){
 		text(currentLine, this.cbX+15,this.cbY+5,this.cbW-30,height/6-15);
+		}
 			if (kb.presses(' ')) {
 				this.chatbox();
-					if(this.whichLine<chat.length){
-						this.whichLine+=1;
+					if(this.whichLine[index]<chat.length){
+						this.whichLine[index]+=1;
 					}else{
-					
 						if(this.part == 'access granted'){
+							//this.scene=1;
 							scene = 'final';
 						}else{
-						this.whichLine=-1;
+						this.whichLine[index]=-1;
 						this.part=' ';
 						}
 				}
