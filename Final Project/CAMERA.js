@@ -14,7 +14,7 @@ class CAMERA{
 		
 		this.dX = 2500;
 		this.dY = 300;
-		this.scene = 1;
+		this.scene = 5;
 		
 		this.zoomIn = false;
 		
@@ -150,6 +150,12 @@ class CAMERA{
 			//set the postion of jellyfish to the default
 			jellyfish.x = width/2;
 			jellyfish.y = height/2;
+		if(this.scene==3){
+			audio[4].play();
+		}
+		if(this.scene!=3 && this.scene!=4){
+					audio[3].play();
+					}
 		}
 	
 	bgd1(){ 
@@ -195,7 +201,8 @@ class CAMERA{
 			if(hpI<200){
 				if(this.playing==false){
 					this.playing = true;
-					bgm.loop();
+					audio[0].loop();
+					audio[1].loop();
 					this.part = 'background music';
 				}
 				else{
@@ -207,6 +214,7 @@ class CAMERA{
 			
 			if(tpI<200){
 				if(this.pickup ==false){
+					audio[1].stop();
 					this.pickup = true;
 					this.part = 'phone call';
 				}
@@ -229,7 +237,7 @@ class CAMERA{
 	bgd3(y){
 		jellyfish.visible = false;
 		background(0);
-		
+
 		push();
 		translate(width/2,y);
 		//rotate(PI);
@@ -287,8 +295,6 @@ class CAMERA{
 		//print(this.torch);
 	}
 		
-	
-	
 	scene4(hpI,tpI,sI,cI,tcI){
 	
 		if(kb.presses(' ')){
@@ -301,22 +307,28 @@ class CAMERA{
 			}
 			if(sI <400){
 				if(this.swi==false){
+					audio[5].play();
 					this.swi=true;
 				}else{
+					audio[5].play();
 					this.swi=false;
 				}
 			}
 			if(cI<400){
 				if(this.candle==false){
+					audio[5].play();
 					this.candle=true;
 				}else{
+					audio[5].play();
 					this.candle=false;
 				}
 			}
 			if(tcI<400){
 				 if(this.torch ==false){
+					 audio[5].play();
 					this.torch=true;
 				 }else{
+					 audio[5].play();
 					this.torch=false;
 				}
 		}
@@ -385,6 +397,8 @@ class CAMERA{
 		*/
 	}
 	
+	
+	
 	scene5(hpI,tpI,sI,cI,tcI){
 		//hpI 500, tpI 200, sI 300, cI 250; tcI 250
 		
@@ -393,6 +407,7 @@ class CAMERA{
 				if(kb.presses(' ')){
 			
 				if(this.access ==false){
+					audio[6].play();
 					this.part = 'access denied';
 				}else{
 					this.part = 'access granted';
@@ -428,13 +443,16 @@ class CAMERA{
 				}
 				
 			}
+		
 			if(kb.presses(' ')){
 			//lights and arcade interaction
 			for(let i =0;i<7;i++){
 				if(this.arcadeI[i]<150){
 					if(this.arcadeBoo[i] ==false){
+						audio[5].play();
 						this.arcadeBoo[i]=true;
 					}else{
+						audio[5].play();
 						this.arcadeBoo[i]=false;
 					}
 				}
@@ -451,7 +469,6 @@ class CAMERA{
 		}
 	}
 			
-		
 		sceneChange(dI){
 			if(kb.presses(' ')){
 				if(dI <200){
@@ -552,6 +569,9 @@ class CAMERA{
 
 	}
 		
+	//  2 IN
+// 5 button,
+	
 	INdisplay(chat,index){
 		let currentLine= chat[this.whichLine[index]]; // a string
 		if(this.whichLine[index]>=0 && this.whichLine[index]<chat.length){
@@ -561,19 +581,31 @@ class CAMERA{
 				this.chatbox();
 					if(this.whichLine[index]<chat.length){
 						this.whichLine[index]+=1;
+						if(chat!=narrative[7]){
+						audio[2].play();
+						}
 					}else{
 						if(this.part == 'access granted'){
-							//this.scene=1;
-							scene = 'final';
+							// //this.scene=1;
+							// scene = 'final';
+							// audio[7].play();
 						}else{
 						this.whichLine[index]=-1;
 						this.part=' ';
 						}
 				}
+				
+				if(this.whichLine[index]==chat.length-1){
+					if(this.part == 'access granted'){
+							//this.scene=1;
+							scene = 'final';
+							audio[7].play();
+						}
 			}
 			
 			
 	
+	}
 	}
 	
 	
@@ -642,6 +674,7 @@ class CAMERA{
 				this.flyspeed+= -0.1;
 			}
 			else{
+				//audio[4].stop();
 				this.update();
 			}
 		}
