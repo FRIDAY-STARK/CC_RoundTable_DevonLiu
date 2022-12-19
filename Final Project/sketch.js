@@ -20,6 +20,11 @@ let siren;
 //4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted; 9 pauses
 let narrative=[];
 
+let audio=[];
+// 0 background music, 1 telephone, 2 IN, 3 door, 
+//4 inkjet, 5 button, 6 access_denied, 7 access_granted
+
+
 function preload(){
     allSprites.collider = 'none';
   
@@ -32,8 +37,10 @@ function preload(){
   //shake = loadAni('shake_1.png',2);
   candle2 = loadImage('data/image/candle_1.png');
   
-  bgm = loadSound('data/audio/bgm.mp3'); //credit:Genshin Impact OST - Mondstadt
-  
+for(let i=0; i<8;i++){
+  audio[i] = loadSound(i+'.mp3'); //credit:freesound.org
+  }
+
   for(let i=0;i<7;i++){
     arcadeF[i] = loadImage('data/image/arcadeF_'+i+'.png');
     arcadeN[i] = loadImage('data/image/arcadeN_'+i+'.png');    
@@ -49,7 +56,7 @@ function preload(){
   }
   siren = loadImage('data/image/Devon.png');
 
-    for(let i=0;i<5;i++){
+    for(let i=0;i<7;i++){
     texture[i] = loadImage('texture'+i+'.png');
   }
   
@@ -98,6 +105,14 @@ function preload(){
    
    cam = new CAMERA();
    
+   audio[2].setVolume(0.02);   
+   audio[3].setVolume(0.06);
+   audio[1].setVolume(0.04);
+   audio[0].setVolume(0.05);
+   audio[4].setVolume(0.03);
+   audio[5].setVolume(0.06);
+   audio[6].setVolume(0.07);
+   audio[7].setVolume(0.03);
    
 }
 
@@ -115,9 +130,11 @@ function draw(){
     
     if (keyboard.presses('I')||kb.presses('i')) {
       scene ='instructions'; //switch to instructions page
+      audio[2].play();
     } 
     if (kb.presses('ENTER')) {
       scene = 'scene1'; //start, officially
+      audio[3].play();
     }
   }
   
@@ -126,6 +143,7 @@ function draw(){
     
     if (kb.presses('M')||kb.presses('m')) {
       scene ='menu'; //switch back to the menu
+      audio[2].play();
     } 
   }
   if(scene == 'scene1'){
