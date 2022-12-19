@@ -82,17 +82,17 @@ class CAMERA{
 		// limit the movements of jellyfish
 		//make the jellyfish start at the bottom left corner of the limited space
 		
-		if (jellyfish.x < 0+jellyfish.w) {
-			jellyfish.x = 0+jellyfish.w;//left limit
+		if (jellyfish.x < 0) {
+			jellyfish.x = 0;//left limit
 		}
-		if (jellyfish.y < height-SCENE_H+jellyfish.h) {
-			jellyfish.y = height-SCENE_H+jellyfish.h; //top limit
+		if (jellyfish.y < height-SCENE_H) {
+			jellyfish.y = height-SCENE_H; //top limit
 		}
-		if (jellyfish.x >SCENE_W-jellyfish.w) {
-			jellyfish.x = SCENE_W-jellyfish.w; //right limit
+		if (jellyfish.x >SCENE_W) {
+			jellyfish.x = SCENE_W; //right limit
 		}
-		if (jellyfish.y > height-jellyfish.h) {
-			jellyfish.y = height-jellyfish.h; //bottom limit
+		if (jellyfish.y > height) {
+			jellyfish.y = height; //bottom limit
 		}
 		background(0);
 		// stroke(255);
@@ -167,7 +167,7 @@ class CAMERA{
 		textSize(50);
 		text("don't forget the instructions!",25,30);
 		textFont(fontReg);
-		textSize(40);
+		textSize(30);
 		text("press WASD to move around. ", 25,100);
 		text('press space keys to interact with objects.',25,140);
 		text('press z to zoom in/out.',25,180);
