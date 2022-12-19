@@ -129,18 +129,29 @@ class CAMERA{
 		noStroke();
 		fill(255);
 		textAlign(LEFT,TOP);
+		textFont(fontBold);
+		textSize(50);
+		text("don't forget the instructions!",25,30);
 		textFont(fontReg);
-		textSize(30);
-		text("don't forget the instructions! WASD and space keys are your friends. ->", 25,570);
-		text('pressing z to zoom in/out',25,600);
+		textSize(40);
+		text("press WASD to move around. ", 25,100);
+		text('press space keys to interact with objects.',25,140);
+		text('press z to zoom in/out.',25,180);
+		
+		textFont(fontBold);
+		textSize(50);
+		text('attention! this is the chatbox',25,600);
+		imageMode(CENTER);
+		image(arrow,690,620,130,130);
 		
 		textAlign(LEFT,CENTER);
 		textFont(fontBold);
 		textSize(30);
 		text('start your journey with a background music', 800,height/2-300);
 		
-		imageMode(CENTER);
-		image(headphone, this.hpX,this.hpY,250,250);
+		
+
+		image(headphone, this.hpX,this.hpY,150,150);
 		if(this.pickup == false){
 		//animation(shake,this.tpX, this.tpY-300,250,250);
 			image(telephone,this.tpX+random(-10,10),this.tpY+random(-10,10),250,250);
@@ -160,9 +171,9 @@ class CAMERA{
 					this.part = 'background music';
 				}
 				else{
-					this.playing=false;
-					bgm.pause();
-					this.part = 'pauses';
+					// this.playing=false;
+					// bgm.pause();
+					this.part = '';
 				}
 			}
 			
@@ -172,6 +183,11 @@ class CAMERA{
 					this.part = 'phone call';
 				}
 			}
+				//else{
+					
+// 					this.part = '';
+// 					this.whichLine[1]=-1;
+// 				}
 		}
 	}
 	
@@ -200,24 +216,26 @@ class CAMERA{
 	// 	}
 	
 	bgd4(){
+		imageMode(CENTER);
 		this.hpX = 600;
 		this.hpY = -100;
 		image(note,this.hpX,this.hpY,200,200);
 		
-		this.tpX= 2200;
-		this.tpY = -1000;
+		this.tpX= 2600;
+		this.tpY = -400;
 		this.dX = 40000; //to make sure the dI wouldn't affect the interaction
 		this.dY = 40000;
+		
 		image(house,this.tpX,this.tpY,800,800);
 		
-		textAlign(LEFT,TOP);
+		textAlign(CENTER,TOP);
 		fill(255);
 		noStroke();
 		textFont(fontBold);
 		textSize(50);
-		text('In Light We Trust.',this.tpX+220, this.tpY+800);
+		text('In Light We Trust.',this.tpX, this.tpY+400);
 		
-		
+		imageMode(CORNER);
 		if(this.swi==false){
     image(switch1,this.sX,this.sY,300,300);
 			this.light = false;
@@ -248,6 +266,10 @@ class CAMERA{
 			if(hpI<200){
 				this.part = 'note light';
 			}
+			else{
+				this.part = '';
+				this.whichLine[2]=-1;
+			}
 			if(sI <400){
 				if(this.swi==false){
 					this.swi=true;
@@ -271,7 +293,7 @@ class CAMERA{
 		}
 			
 			if(this.light ==true){
-				if(tpI<800){
+				if(tpI<400){
 						this.update();
 					}
 				}
@@ -336,29 +358,48 @@ class CAMERA{
 	
 	scene5(hpI,tpI,sI,cI,tcI){
 		//hpI 500, tpI 200, sI 300, cI 250; tcI 250
-		if(kb.presses(' ')){
-			
+		
 			//interactive narratives
 			if(hpI<500){ //computer
+				if(kb.presses(' ')){
+			
 				if(this.access ==false){
 					this.part = 'access denied';
 				}else{
 					this.part = 'access granted';
 				}
+				}
 			}
-			if(tpI<200){ //book
+			else if(tpI<200){ //book
+				if(kb.presses(' ')){
 				this.part = 'book';
+				}
 			}
-			if(sI<300){  //pad //note
+			else if(sI<300){  //pad //note
+				if(kb.presses(' ')){
 				this.part = 'note';
+				}
 			}
-			if(cI<250){//notebook
+			else if(cI<250){//notebook
+				if(kb.presses(' ')){
 				this.part = 'notebook';
+				}
 			}
-			if(tcI<250){ //diary
+			else if(tcI<250){ //diary
+				if(kb.presses(' ')){
 				this.part = 'diary';
+				}
 			}
-			
+			else{
+				if(kb.presses(' ')){
+				this.part = '';
+				}
+				for(let i=3;i<9;i++){
+				this.whichLine[i]=-1;
+				}
+				
+			}
+			if(kb.presses(' ')){
 			//lights and arcade interaction
 			for(let i =0;i<7;i++){
 				if(this.arcadeI[i]<150){
@@ -391,6 +432,14 @@ class CAMERA{
 		}
 		
 		movement(){
+			if (kb.pressing('w')||kb.pressing('W')){
+				jellyfish.ani = 'stationary'; //animations moving up
+				jellyfish.y+= -5;
+			}	
+			else if (kb.pressing('s')||kb.pressing('S')){
+				jellyfish.ani = 'stationary'; //animations moving down
+				jellyfish.y+= 5;
+			}	
 			if (kb.pressing('a')||kb.pressing('A')) {
 				jellyfish.ani = 'left'; //animations moving left
 				jellyfish.x +=-5;
@@ -399,17 +448,13 @@ class CAMERA{
 				jellyfish.ani = 'right'; //animations moving right
 				jellyfish.x += 5;
 			}	
-			else if (kb.pressing('w')||kb.pressing('W')){
-				jellyfish.ani = 'stationary'; //animations moving up
-				jellyfish.y+= -5;
-			}	
-			else if (kb.pressing('s')||kb.pressing('S')){
-				jellyfish.ani = 'stationary'; //animations moving down
-				jellyfish.y+= 5;
-			}	
 			else {
 				jellyfish.ani = 'stationary'; //animations not moving
 			}
+			 
+			// else {
+			// 	jellyfish.ani = 'stationary'; //animations not moving
+			// }
 			
 			if (kb.presses('z')||kb.presses('Z')) {
 				if (this.zoomIn == false){
@@ -471,6 +516,9 @@ class CAMERA{
 		}
 		else if(this.part == 'access granted'){
 			this.INdisplay(narrative[8],8);
+		}
+		else if(this.part == ''){
+			this.chatbox();
 		}
 
 	}
@@ -543,8 +591,6 @@ class CAMERA{
 		//print(tcI);
 		
 		if(this.scene == 1){
-
-			jellyfish.visible = true;
 			//set limit the view of camera
 			this.limit(3000,800);
 			//draw the background of scene1
