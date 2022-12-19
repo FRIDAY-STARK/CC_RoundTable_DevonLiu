@@ -600,6 +600,7 @@ class CAMERA{
 							//this.scene=1;
 							scene = 'final';
 							audio[7].play();
+							audio[0].stop();
 						}
 			}
 			
@@ -664,6 +665,7 @@ class CAMERA{
 		this.scene1(hpI,tpI);
 		}
 		else if (this.scene ==2){
+			audio[1].stop();
 			this.limit(1200,800);
 			this.bgd2();
 		}
