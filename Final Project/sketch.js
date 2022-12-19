@@ -38,7 +38,7 @@ function preload(){
   candle2 = loadImage('data/image/candle_1.png');
   
 for(let i=0; i<8;i++){
-  audio[i] = loadSound(i+'.mp3'); //credit:freesound.org
+  audio[i] = loadSound('data/audio/'+i+'.mp3'); //credit:freesound.org
   }
 
   for(let i=0;i<7;i++){
@@ -57,7 +57,7 @@ for(let i=0; i<8;i++){
   siren = loadImage('data/image/Devon.png');
 
     for(let i=0;i<7;i++){
-    texture[i] = loadImage('texture'+i+'.png');
+    texture[i] = loadImage('data/image/texture'+i+'.png');
   }
   
   for(let i=0;i<10;i++){
