@@ -14,7 +14,7 @@ class CAMERA{
 		
 		this.dX = 2500;
 		this.dY = 300;
-		this.scene = 5;
+		this.scene = 1;
 		
 		this.zoomIn = false;
 		
