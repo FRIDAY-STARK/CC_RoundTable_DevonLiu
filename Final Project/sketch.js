@@ -6,7 +6,7 @@ let scene = 'menu';
 let jellyfish;
 let stationary,leftAni,rightAni;
 let bgm;
-let headphone,door,telephone,inkjet,note,house,candle1,switch1,switch2,pad,cpu,torch1,torch2,candle2,diary,book;//shake;
+let headphone,door,telephone,inkjet,note,house,candle1,switch1,switch2,pad,cpu,torch1,torch2,candle2,diary,book,arrow;//shake;
 let images = [];
 let chat;
 let xpos, ypos;
@@ -42,7 +42,7 @@ function preload(){
     bulb[i] = loadImage('data/image/bulb'+i+'.png'); 
   }
   
-  for(let i=0;i<15;i+=1){
+  for(let i=0;i<16;i+=1){
     let m = i+1;
     images[i] = loadImage('data/image/'+m+'.png');  
   }
@@ -73,7 +73,8 @@ function preload(){
   torch2 = images[12];
    diary = images[13];
    book = images[14];
-   
+   arrow = images[15];
+
    homepage = new startPage();
    
    stationary.frameDelay=10;
