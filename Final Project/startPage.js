@@ -3,7 +3,7 @@ class startPage{
 	constructor(){
 		this.title = 120;
 		this.subtitle = 50;
-		this.caption = 40;
+		this.caption = 30;
 	}
 	
 	menu(){
@@ -18,7 +18,7 @@ class startPage{
 	text('press enter to start your journey',width/2,height/2+250);
 		
 	textFont(fontReg);
-	textSize(this.caption);
+	textSize(this.caption+10);
 	text('press i for instructions', width/2, height/2+300);
 		
 		
