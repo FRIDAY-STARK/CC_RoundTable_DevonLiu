@@ -105,13 +105,13 @@ for(let i=0; i<8;i++){
    
    cam = new CAMERA();
    
-   audio[2].setVolume(0.02);   
+   audio[2].setVolume(0.01);   
    audio[3].setVolume(0.06);
-   audio[1].setVolume(0.04);
+   audio[1].setVolume(0.02);
    audio[0].setVolume(0.05);
-   audio[4].setVolume(0.03);
-   audio[5].setVolume(0.06);
-   audio[6].setVolume(0.07);
+   audio[4].setVolume(0.07);
+   audio[5].setVolume(0.02);
+   audio[6].setVolume(0.04);
    audio[7].setVolume(0.03);
    
 }
