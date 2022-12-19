@@ -3,7 +3,7 @@ class startPage{
 	constructor(){
 		this.title = 120;
 		this.subtitle = 50;
-		this.caption = 30;
+		this.caption = 40;
 	}
 	
 	menu(){
@@ -43,7 +43,7 @@ class startPage{
 		text("I wouldn't tell you what is going on here.",width/2,height/2-250);
 		text('Just press wasd keys to control your movement.', width/2,height/2-200);
 		text('Press space when you want to interact with anything or anyone.', width/2,height/2+200);
-		text('Hope you enjoy your journey......',width/2,height/2+250);
+		text('Press z to zoom in/out.',width/2,height/2+250);
 		
 		//clear();
 		//jellyfish.debug = mouse.pressing();
