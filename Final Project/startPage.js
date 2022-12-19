@@ -7,7 +7,7 @@ class startPage{
 	}
 	
 	menu(){
-	background(0);
+	this.bgd();
 	fill(255);
 	textFont(fontBold);
 	textSize(this.title);
@@ -28,7 +28,7 @@ class startPage{
 	}
 	
 	instructions(){
-		background(0);
+		this.bgd();
 		fill(255);
 		textAlign(CENTER);
 		textFont(fontBold);
@@ -48,6 +48,17 @@ class startPage{
 		//clear();
 		//jellyfish.debug = mouse.pressing();
 		jellyfish.ani = 'stationary'; 
+		
+	}
+	
+	bgd(){
+		let tsize =200;
+		for(let i=0; i<width; i+=tsize){
+			for(let j=0; j<height; j+=tsize){
+			image(texture[3],i,j,tsize,tsize);
+			}
+		}
+		
 		
 	}
 	

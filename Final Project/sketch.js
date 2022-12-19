@@ -14,6 +14,7 @@ let cam;
 let arcadeF =[];
 let arcadeN =[];
 let bulb=[];
+let texture = [];
 let siren;
 // 0 background_music, 1 phone_call, 2 note_light, 3 bookTXT
 //4 noteTXT, 5 notebook, 6 diaryTXT,  7 access_denied, 8 access_granted; 9 pauses
@@ -47,6 +48,10 @@ function preload(){
     images[i] = loadImage('data/image/'+m+'.png');  
   }
   siren = loadImage('data/image/Devon.png');
+
+    for(let i=0;i<5;i++){
+    texture[i] = loadImage('texture'+i+'.png');
+  }
   
   for(let i=0;i<10;i++){
   narrative[i] = loadStrings('data/text/'+i+'.txt');

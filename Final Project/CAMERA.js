@@ -82,37 +82,65 @@ class CAMERA{
 		// limit the movements of jellyfish
 		//make the jellyfish start at the bottom left corner of the limited space
 		
-		if (jellyfish.x < 0) {
-			jellyfish.x = 0;//left limit
+		if (jellyfish.x < 0+jellyfish.w) {
+			jellyfish.x = 0+jellyfish.w;//left limit
 		}
-		if (jellyfish.y < height-SCENE_H) {
-			jellyfish.y = height-SCENE_H; //top limit
+		if (jellyfish.y < height-SCENE_H+jellyfish.h) {
+			jellyfish.y = height-SCENE_H+jellyfish.h; //top limit
 		}
-		if (jellyfish.x >SCENE_W) {
-			jellyfish.x = SCENE_W; //right limit
+		if (jellyfish.x >SCENE_W-jellyfish.w) {
+			jellyfish.x = SCENE_W-jellyfish.w; //right limit
 		}
-		if (jellyfish.y > height) {
-			jellyfish.y = height; //bottom limit
+		if (jellyfish.y > height-jellyfish.h) {
+			jellyfish.y = height-jellyfish.h; //bottom limit
 		}
 		background(0);
-		stroke(255);
-		strokeWeight(20);
+		// stroke(255);
+		// strokeWeight(20);
+		imageMode(CORNER);
+		let tsize =200;
 		if(this.scene==1){
-		noFill();
+			for(let i=0; i<SCENE_W; i+=tsize){
+				for(let j=height-SCENE_H; j<height; j+=tsize){
+				image(texture[3],i,j,tsize,tsize);
+				}
+			}	
 		}
-		else if(this.scene==2||this.scene==5){
-			stroke(100);
-			fill(255);
+		else if(this.scene==2){
+			background(0);
 		}
 		else if(this.scene==4){
-			if(this.swi ==false){
-				noFill();
-			}else{
-				fill(255);
+			for(let i=0; i<SCENE_W; i+=tsize){
+				for(let j=height-SCENE_H; j<height; j+=tsize){
+					if(this.swi ==false){
+						image(texture[5],i,j,tsize,tsize);
+					}else{
+						image(texture[6],i,j,tsize,tsize);
+					}
+				}
 			}
 		}
-		rectMode(CORNER);
-		rect(0, height-SCENE_H, SCENE_W + jellyfish.w, SCENE_H + jellyfish.h);
+		else if(this.scene==5){
+			for(let i=0; i<SCENE_W; i+=tsize){
+				for(let j=height-SCENE_H; j<height; j+=tsize){
+				image(texture[0],i,j,tsize,tsize);
+				}
+			}	
+		}
+		
+		// rectMode(CORNER);
+		// rect(0, height-SCENE_H, SCENE_W + jellyfish.w, SCENE_H + jellyfish.h);
+		imageMode(CORNER);
+		let bsize =100;
+		for(let i = 0-bsize; i<SCENE_W;i+=bsize){
+			image(texture[4],i,height-SCENE_H-bsize,bsize,bsize);
+			image(texture[4],i,height,bsize,bsize);
+		}
+		for(let i = height-SCENE_H-bsize; i<height+bsize;i+=bsize){
+			image(texture[4],0-bsize,i,bsize,bsize);
+			image(texture[4],SCENE_W,i,bsize,bsize);
+		}
+		
 		
 		
 	}
@@ -248,6 +276,7 @@ class CAMERA{
 		}else{
 			image(candle2,this.cX,this.cY,300,300);
 		}
+		
 		imageMode(CENTER);
 		if(this.torch ==false){
 			image(torch1,this.tcX, this.tcY, 500,500);
