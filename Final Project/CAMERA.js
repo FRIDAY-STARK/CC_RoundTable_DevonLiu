@@ -248,7 +248,7 @@ class CAMERA{
 		}else{
 			image(candle2,this.cX,this.cY,300,300);
 		}
-		
+		imageMode(CENTER);
 		if(this.torch ==false){
 			image(torch1,this.tcX, this.tcY, 500,500);
 		}else{
@@ -308,7 +308,7 @@ class CAMERA{
 		//computer
 		this.hpX = 1000+(this.XPOS[6]-this.XPOS[0])/2;
 		this.hpY = this.YPOS-900; //ypos=-200
-		image(cpu,this.hpX,this.hpY,975,585);
+		image(cpu,this.hpX,this.hpY,700,700);
 		
 		
 		//book
